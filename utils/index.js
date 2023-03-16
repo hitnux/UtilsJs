@@ -28,5 +28,4 @@ const utils = {
     elementInViewport
 }
 
-export { cookie, text, classes, isDevice, uniquify, elementInViewport };
 export default utils;
