@@ -30,6 +30,24 @@ const arNumberConverter = (strNum: string) => {
   return strNum.replace(numberReg, (x) => en[ar.indexOf(x)]).replace(numberReg, "");
 };
 
+const objectMerger = (o1: any, o2: any) => {
+  const obj = { ...o1, ...o2 };
+
+  Object.keys(o1).forEach((k1: string) => {
+    Object.keys(o2).forEach((k2: string) => {
+      if (k1 === k2) {
+        if (typeof o1[k1] === "object")
+          obj[k1] = {
+            ...o1[k1],
+            ...o2[k1],
+          };
+      }
+    });
+  });
+
+  return obj;
+};
+
 const utils = {
     text,
     cookie,
@@ -37,7 +55,8 @@ const utils = {
     isDevice,
     uniquify,
     elementInViewport,
-    arNumberConverter
+    arNumberConverter,
+    objectMerger
 }
 
 export default utils;
